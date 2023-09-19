@@ -2,52 +2,45 @@
 #include <stdio.h>
 
 /**
- * _printf - Produces output according to a format.
- * @format: The format string.
- *
- * Return: The number of characters printed (excluding the null byte).
- */
+* _printf - Produces output according to a format.
+* @format: The format string.
+*
+* Return: The number of characters printed (excluding the null byte).
+*/
 int _printf(const char *format, ...)
 {
-	int num_chars = 0;
-	va_list args;
-	int i = 0;
-	
-	va_start(args, format);
-	
-	while (format && format[i])
-	{
-		if (format[i] == '%')
-		{
-			i++; /* Move past '%' */
-			switch (format[i])
-			{
-				case 'd': /* Handle integer specifier */
-				case 'i':
-					{
-						int int_arg = va_arg(args, int);
-						num_chars += printf("%d", int_arg);
-					}
-					break;
-				case 'b':/*handles interger binary*//
-					{
-						unsigned int uint_arg = va_arg(args, unsigned int);
-						num_chars += print_binary(uint_arg);
-					}
-					break;
-				default:
-					/* Handle unsupported format specifier */
-					num_chars += putchar('%');
-					num_chars += putchar(format[i]);
-					break;
-			}
-			else
-			{
-				num_chars += putchar(format[i]);
-			}
-			i++;
-		}
-		va_end(args);
-		return (num_chars);
-	}
+int num_chars = 0;
+va_list args;
+int i = 0;
+
+va_start(args, format);
+
+while (format && format[i])
+{
+if (format[i] == '%')
+{
+i++; /* Move past '%' */
+switch (format[i])
+{
+case 'b':/*handles interger binary*/
+{
+unsigned int uint_arg = va_arg(args, unsigned int);
+num_chars += print_binary(uint_arg);
+}
+break;
+default:
+/* Handle unsupported format specifier */
+num_chars += putchar('%');
+num_chars += putchar(format[i]);
+break;
+}
+else
+{
+num_chars += putchar(format[i]);
+}
+i++;
+}
+va_end(args);
+return (num_chars);
+}
 }

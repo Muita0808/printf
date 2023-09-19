@@ -1,6 +1,7 @@
 #include "main.h"
 
 /**
+ * _printf: prints out the binary number followed by a new line
  * main - Entry point
  *
  * Return: Always 0
